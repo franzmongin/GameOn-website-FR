@@ -29,8 +29,7 @@ function checkLastName(){
 
 //email validation
 function checkEmail(){
-    let mailRegExp = new RegExp("^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$")
-    if(mailRegExp.test(document.getElementById('email').value)){
+    if(/^\w+@\w+\.\w{1,3}$/.test(document.getElementById('email').value)){
         document.getElementById('email-validation').innerText = "";
     }else{
         console.log('ok')
