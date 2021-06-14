@@ -58,7 +58,7 @@
           <div class="modal-body">
             <form
               name="reserve"
-              action="index.html"
+              action=""
               method="get"
               id="modal-form"
             >
@@ -108,7 +108,8 @@
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <p id="quantity-validation"></p>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -119,7 +120,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-                  required
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -191,7 +191,6 @@
                   id="checkbox1"
                   name="checkbox1"
                   checked
-                  required
                 />
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
@@ -212,6 +211,7 @@
                 class="button"
                 value="C'est parti"
               />
+              <p id="form-confirmation"></p>
             </form>
           </div>
         </div>
