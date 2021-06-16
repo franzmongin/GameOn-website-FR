@@ -186,6 +186,7 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  min-height: 849px;
 }
 
 label {
@@ -225,6 +226,14 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
+}
+#form-confirmation{
+  display: none;
+  height:819px;
+  flex-direction: column;
+}
+#form-confirmation-message{
+  margin:auto;
 }
 /* 
 input[data-error]::after {

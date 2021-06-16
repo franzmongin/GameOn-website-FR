@@ -1,57 +1,30 @@
 let errorMessages = {
-    firstName : "Veuillez entrer 2 caractères ou plus pour le champ du prénom",
-    lastName : "Veuillez entrer 2 caractères ou plus pour le champ du nom",
-    email: "Veuillez entrer une adresse email valide",
-    quantity : "Veuillez entrer un nombre valide de concours auxquels vous avez participé",
-    location :"Veuillez sélectionner une ville",
-    conditions : "Veuillez accepter les conditions"
+    "first-name" : "Veuillez entrer 2 caractères ou plus pour le champ du prénom",
+    "last-name" : "Veuillez entrer 2 caractères ou plus pour le champ du nom",
+    "email": "Veuillez entrer une adresse email valide",
+    "quantity" : "Veuillez entrer un nombre valide de concours auxquels vous avez participé",
+    "location" :"Veuillez sélectionner une ville",
+    "conditions" : "Veuillez accepter les conditions"
 }
 
-let formValid = false;
-
-// firstName validation
-function checkFirstName(){
-    if(/\w{2,}/.test(document.getElementById('first-name').value)){
-        document.getElementById('first-name-validation').innerText = "";
-        formValid = true;
-
-    }else{
-        document.getElementById('first-name-validation').innerText = errorMessages.firstName;
-        formValid = false;
-    }
+let fieldRegexs = {
+    "first-name" : "\\w{2,}",
+    "last-name" : "\\w{2,}",
+    "email": "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)$",
+    "quantity" : "^[0-9]+$",
 }
 
-// lastName validation
-function checkLastName(){
-    if(/\w{2,}/.test(document.getElementById('last-name').value)){
-        document.getElementById('last-name-validation').innerText = "";
-        formValid = true;
+let formValidationsResults = [];
+let formValid = true;
 
+function fieldValidation(fieldName){
+    let regex = new RegExp(fieldRegexs[fieldName]);
+    if(regex.test(document.getElementById(fieldName).value)){
+        document.getElementById(fieldName+'-validation').innerText = "";
+        formValidationsResults[fieldName] = true;
     }else{
-        document.getElementById('last-name-validation').innerText = errorMessages.lastName;
-        formValid = false;
-    }
-}
-
-//email validation
-function checkEmail(){
-    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)$/.test(document.getElementById('email').value)){
-        document.getElementById('email-validation').innerText = "";
-        formValid = true;
-    }else{
-        document.getElementById('email-validation').innerText = errorMessages.email;
-        formValid = false
-    }
-}
-
-//quantity validation
-function checkQuantity(){
-    if(/^[0-9]+$/.test(document.getElementById('quantity').value)){
-        document.getElementById('quantity-validation').innerText = "";
-        formValid = true;
-    }else{
-        document.getElementById('quantity-validation').innerText = errorMessages.quantity;
-        formValid = false;
+        document.getElementById(fieldName+'-validation').innerText = errorMessages[fieldName];
+        formValidationsResults[fieldName] = false;
     }
 }
 
@@ -59,6 +32,7 @@ function checkQuantity(){
 function checkLocation(){
     let valid = false;
     let locations = document.getElementsByName('location');
+    console.log(locations)
     for( let location of locations){
         if(location.checked){
             valid = true;
@@ -66,10 +40,10 @@ function checkLocation(){
     }
     if(valid){
         document.getElementById('location-validation').innerText = "";
-        formValid = true;
+        formValidationsResults['location'] = true;
     }else{
         document.getElementById('location-validation').innerText = errorMessages.location;
-        formValid = false;
+        formValidationsResults['location'] = false;
     }
 }
 
@@ -78,25 +52,33 @@ function checkConditions(){
     document.getElementById('checkbox1').checked ? (document.getElementById('conditions-validation').innerText = "") : document.getElementById('conditions-validation').innerText = errorMessages.conditions;
     if(document.getElementById('checkbox1').checked){
         document.getElementById('conditions-validation').innerText = "";
-        formValid = true
+        formValidationsResults['conditions'] = true;
     }else{
-        formValid = false;
+        formValidationsResults['conditions'] = false;
     }
 }
 
+// fonction appelée lors du submit du formulaire
 function onSubmit(e){
+    formValid = true;
     e.preventDefault();
-    checkFirstName();
-    checkLastName();
-    checkEmail();
-    checkQuantity();
+    fieldValidation('first-name');
+    fieldValidation('last-name');
+    fieldValidation('email');
+    fieldValidation('quantity');
     checkLocation();
     checkConditions();
+    console.log(formValidationsResults);
+    console.log(Object.entries(formValidationsResults))
+    for (const [key, value] of Object.entries(formValidationsResults)) {
+        if(value === false){
+            formValid = false;
+        }
+    }
+    console.log(formValid);
     if(formValid){
-        document.getElementById('form-confirmation').innerText = "Merci ! Votre réservation a été reçue.";
-    }else{
-        document.getElementById('form-confirmation').innerText = "";
-
+        document.querySelector("#modal-form").style.display = "none";
+        document.querySelector("#form-confirmation").style.display = "flex";
     }
 }
 
