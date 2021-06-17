@@ -71,6 +71,7 @@ img {
 }
 .topnav a:hover span{
   border-bottom: 1px solid white;
+  padding-bottom: 2px;
 }
 
 .topnav .icon {
@@ -433,7 +434,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /* min-height: 93vh; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -448,7 +449,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  max-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -466,10 +467,11 @@ input[data-error]::after {
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  
 }
 .hero-text {
-  width: 146%;
+  width: 153%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -544,7 +546,14 @@ footer {
     text-align: center;
   }
 }
-
+@media screen and (min-width: 801px){
+  .hero-headline{
+    width:302%;
+  }
+  .hero-img img{
+    object-fit: cover;
+  }
+}
 @keyframes modalopen {
   from {
     opacity: 0;
