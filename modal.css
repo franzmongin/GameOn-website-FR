@@ -33,6 +33,11 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 20px;
+  
 }
 .header-logo {
     float: left;
@@ -50,6 +55,7 @@ img {
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
+  
 }
 
 .topnav a:hover {
@@ -72,35 +78,31 @@ img {
   color:red;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 822px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
-  .main-navbar{
-    position: relative;
-  }
-  .home-link:hover + a{
-    color:white;
-  }
 }
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
+@media screen and (max-width: 822px) {
+  
+  .topnav.responsive a:not(.icon){
     float: none;
     display: block;
     text-align: center;
   }
+  .header-logo{
+    width: 100%;
+  }
 }
 
-
+.topnav .icon {
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
 
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
@@ -109,7 +111,13 @@ img {
     display: block;
     /* margin-top: -15px; */
   }
-} 
+}
+
+@media screen and (max-width: 1108px) {
+  .main-navbar{
+    margin:auto;
+  }
+}
 
 main {
   font-size: 130%;
