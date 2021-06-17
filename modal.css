@@ -100,8 +100,9 @@ img {
 
 .topnav .icon {
   position: absolute;
-  right: 10px;
-  top: 0;
+  right: calc(2vw + 8px);
+  top: 3.5%;
+  margin-right:0;
 }
 
  @media screen and (max-width: 540px) {
