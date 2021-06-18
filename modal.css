@@ -449,7 +449,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  max-width: 424px;
+  
 }
 .hero-content::after {
   content: "";
@@ -552,6 +552,17 @@ footer {
   }
   .hero-img img{
     object-fit: cover;
+  }
+  .hero-content{
+    max-width: 424px;
+  }
+}
+@media screen and (max-width: 500px){
+  .content{
+    margin-top: 0;
+  }
+  .bground{
+    margin-top:90px;
   }
 }
 @keyframes modalopen {
