@@ -255,6 +255,10 @@ input {
 #form-confirmation-message{
   margin:auto;
 }
+.form-validation{
+  color:red;
+  font-size: 16px;
+}
 /* 
 input[data-error]::after {
     content: attr(data-error);
