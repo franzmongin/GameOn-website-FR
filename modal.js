@@ -24,6 +24,8 @@ document.getElementById('confirmation-close').addEventListener("click", closeMod
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  document.querySelector("#modal-form").style.display = "inherit";
+  document.querySelector("#form-confirmation").style.display = "none";
 }
 
 // close modal form
