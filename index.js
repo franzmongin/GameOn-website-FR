@@ -33,7 +33,6 @@ function fieldValidation(fieldName){
 function checkLocation(){
     let valid = false;
     let locations = document.getElementsByName('location');
-    console.log(locations)
     for( let location of locations){
         if(location.checked){
             valid = true;
@@ -69,14 +68,11 @@ function onSubmit(e){
     fieldValidation('quantity');
     checkLocation();
     checkConditions();
-    console.log(formValidationsResults);
-    console.log(Object.entries(formValidationsResults))
     for (const [key, value] of Object.entries(formValidationsResults)) {
         if(value === false){
             formValid = false;
         }
     }
-    console.log(formValid);
     if(formValid){
         document.querySelector("#modal-form").style.display = "none";
         document.querySelector("#form-confirmation").style.display = "flex";
