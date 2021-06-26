@@ -17,6 +17,7 @@ let fieldRegexs = {
 let formValidationsResults = [];
 let formValid = true;
 
+// check field which has regex
 function fieldValidation(fieldName){
     let regex = new RegExp(fieldRegexs[fieldName]);
     if(regex.test(document.getElementById(fieldName).value)){
