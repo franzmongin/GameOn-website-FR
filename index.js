@@ -15,7 +15,6 @@ let fieldRegexs = {
 }
 
 let formValidationsResults = [];
-let formValid = true;
 
 // check field which has regex
 function fieldValidation(fieldName){
@@ -60,8 +59,8 @@ function checkConditions(){
 
 // fonction appelée lors du submit du formulaire
 function onSubmit(e){
-    formValid = true;
     e.preventDefault();
+    formValid = true;
     fieldValidation('first-name');
     fieldValidation('last-name');
     fieldValidation('email');
