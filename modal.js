@@ -31,7 +31,6 @@ function launchModal() {
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
-  document.getElementById('modal-form').reset();
   document.querySelectorAll('.form-validation').forEach((element) => {
     element.innerText = "";
   });
